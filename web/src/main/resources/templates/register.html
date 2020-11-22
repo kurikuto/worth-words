@@ -21,12 +21,27 @@
             <h1>Worth Words</h1>
         </div>
         <div class="contents">
-            <p>HELLO</p>
-            <form action="#" method="post">
-                <p><input type="text" name="id" placeholder="ID"></p>
-                <p><input type="text" name="password" placeholder="PASSWORD"></p>
-                <p><input type="submit" value="ログイン"></p>
+            <form action="/home" id="form" method="post">
+                <div>
+                    <textarea name="words" rows="5" col="40" maxlength="300">器は仕えることによって美を増し、主は使うことによって愛を増すのである。</textarea>
+                </div>
+                <div>
+                    <p><label for="source">出典</label></p>
+                    <input type="text" id="source" name="source" value="柳宗悦">
+                </div>
+                <div>
+                    <p><label for="date">日付</label></p>
+                    <input type="text" id="date" name="date" value="2020/11/22">    
+                </div>
+                <div>
+                    <p><label for="contributor">投稿者</label></p>
+                    <input type="text" id="contributor" name="contributor" value="kurikuto">    
+                </div>
             </form>
+            <div>
+                <a href="/home"><button name="home">戻る</button></a>
+                <button type="submit" form="form" name="register">登録</button>
+            </div>
         </div>
         <div class="footer">
             <img src="" alt="footer image">
