@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <header>
-        <title>ログイン</title>
+        <title>words page</title>
         <meta http-equiv="Content-Type" content="text:html; charset=utf-8" />
     </header>
     <style>
@@ -26,7 +26,7 @@
             </div>
             <div>
                 <p><label for="source">出典</label></p>
-                <input type="text" id="source" value="柳宗悦" disabled>    
+                <input type="text" id="source" th:value="${source}" disabled>    
             </div>
             <div>
                 <p><label for="date">日付</label></p>
