@@ -21,8 +21,8 @@
             <h1>Worth Words</h1>
         </div>
         <div class="contents">
-            <p>HELLO</p>
-            <form action="/home" method="post">
+            <p th:text="${msg}">HELLO</p>
+            <form action="/login" method="post">
                 <div>
                     <p><label for="id">ID</label></p>
                     <input type="text" name="id" placeholder="your id">
