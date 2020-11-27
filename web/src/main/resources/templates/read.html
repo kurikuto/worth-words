@@ -18,24 +18,27 @@
     </style>
     <body>
         <div class="header">
-            <h1>Worth Words</h1>
+            <h1 th:text="#{title}">title</h1>
         </div>
         <div class="contents">
-            <div>
-                <textarea name="words" rows="5" col="40" disabled>器は仕えることによって美を増し、主は使うことによって愛を増すのである。</textarea>
+            <div th:object="${words}">
+                <div>
+                    <textarea name="words" rows="5" col="40" th:text="*{words}" disabled>器は仕えることによって美を増し、主は使うことによって愛を増すのである。</textarea>
+                </div>
+                <div>
+                    <p><label for="source">出典</label></p>
+                    <input type="text" id="source" th:value="*{source}" disabled>    
+                </div>
+                <div>
+                    <p><label for="date">日付</label></p>
+                    <input type="text" id="date" th:value="*{wordsDate}" disabled>    
+                </div>
+                <div>
+                    <p><label for="contributor">投稿者</label></p>
+                    <input type="text" id="contributor" th:value="*{contributor}" disabled>    
+                </div>    
             </div>
-            <div>
-                <p><label for="source">出典</label></p>
-                <input type="text" id="source" th:value="${source}" disabled>    
-            </div>
-            <div>
-                <p><label for="date">日付</label></p>
-                <input type="text" id="date" value="2020/11/22" disabled>    
-            </div>
-            <div>
-                <p><label for="contributor">投稿者</label></p>
-                <input type="text" id="contributor" value="kurikuto" disabled>    
-            </div>
+            <!-- <p><a href="/list"><button name="list" >戻る</button></a></p> -->
             <p><a href="/home"><button name="home" >HOME</button></a></p>
         </div>
         <div class="footer">

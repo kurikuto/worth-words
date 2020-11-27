@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <header>
-        <title>ログイン</title>
+        <title>register</title>
         <meta http-equiv="Content-Type" content="text:html; charset=utf-8" />
     </header>
     <style>
@@ -18,7 +18,7 @@
     </style>
     <body>
         <div class="header">
-            <h1>Worth Words</h1>
+            <h1 th:text="#{title}">title</h1>
         </div>
         <div class="contents">
             <form action="/home" id="form" method="post">
