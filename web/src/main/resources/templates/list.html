@@ -37,19 +37,13 @@
                 <p th:text="${category}">category</p>
             </div>
             <ul style="list-style:none">
-                <li>
-                    <a th:href="@{/words/read/1}"><p>タイトル</p><p>日付</p></a>
+                <li th:each="words:${wordsList}">
+                    <a th:href="@{'/words/read/{id}'(id=${words.id})}">
+                        <p th:text="${words.title}">タイトル</p>
+                        <p th:text="${words.wordsDate}">日付</p>
+                    </a>
                 </li>
-                <li>
-                    <a th:href="@{/words/read/2}"><p>タイトル</p><p>日付</p></a>
-                </li>
-                <li>
-                    <a th:href="@{/words/read/3}"><p>タイトル</p><p>日付</p></a>
-                </li>
-                <li>
-                    <a th:href="@{/words/read/4}"><p>タイトル</p><p>日付</p></a>
-                </li>
-            </ul>            
+            </ul>
             <p><button type="submit" formaction="#" name="back">前へ</button></p>
             <p><button type="submit" formaction="#" name="foward">次へ</button></p>
             <p><a href="/home"><button name="home" >HOME</button></a></p>

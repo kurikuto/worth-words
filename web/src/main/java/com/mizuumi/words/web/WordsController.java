@@ -1,9 +1,7 @@
 package com.mizuumi.words.web;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import com.mizuumi.words.web.dto.Words;
+import com.mizuumi.words.web.util.dateUtil;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,15 +19,11 @@ public class WordsController {
         }
 
         Words words = new Words();
-        // 現在日時
-        LocalDateTime nowDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-
         // Wordsクラス設定
         words.setWords("ことば" + res);
         words.setSource("出典" + res);
         words.setCategory(res);
-        words.setWordsDate(nowDateTime.format(formatter));
+        words.setWordsDate(dateUtil.getNowDate());
         words.setContributor("投稿者" + res);
         mav.addObject("words", words);
 
@@ -45,15 +39,11 @@ public class WordsController {
     @RequestMapping("/words/today")
     public ModelAndView today(ModelAndView mav) {
         Words words = new Words();
-        // 現在日時
-        LocalDateTime nowDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-
         // Wordsクラス設定
         words.setWords("今日のことば");
         words.setSource("今日の出典");
         words.setCategory(1);
-        words.setWordsDate(nowDateTime.format(formatter));
+        words.setWordsDate(dateUtil.getNowDate());
         words.setContributor("今日の投稿者");
         mav.addObject("words", words);
 
