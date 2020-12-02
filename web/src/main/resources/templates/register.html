@@ -4,20 +4,9 @@
         <title>register</title>
         <meta http-equiv="Content-Type" content="text:html; charset=utf-8" />
     </header>
-    <style>
-        h1 {
-            font-size: 18pt;
-            font-weight: bold;
-            color: gray;
-        }
-        body {
-            font-size: 13pt;
-            color: gray;
-            margin: 5px 25px;
-        }
-    </style>
+    <style th:include="base::base_style"></style>
     <body>
-        <div class="header">
+        <div th:include="base::header_body">
             <h1 th:text="#{title}">title</h1>
         </div>
         <div class="contents">
@@ -43,7 +32,7 @@
                 <button type="submit" form="form" name="register">登録</button>
             </div>
         </div>
-        <div class="footer">
+        <div th:include="base::footer_body">
             <img src="" alt="footer image">
         </div>
     </body>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <header>
+        <title>base</title>
+        <meta http-equiv="Content-Type" content="text:html; charset=utf-8" />
+    </header>
+    <style th:fragment="base_style">
+        .header {
+            background-color: #679843;
+        }
+        .footer {
+            background-color: #679843;
+            color: #C8D000;
+        }
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #C8D000;
+        }
+        body {
+            font-size: 13pt;
+            color: gray;
+            margin: 5px 25px;
+            background-color: #EEFFE5;
+        }
+    </style>
+    <body>
+        <div th:fragment="header_body">
+            <div class="header">
+                <h1 th:text="#{title}">title</h1>
+            </div>
+        </div>
+        <div th:fragment="footer_body">
+            <div class="footer">
+                <img src="" alt="footer image">
+            </div>
+        </div>
+    </body>
+</html>
