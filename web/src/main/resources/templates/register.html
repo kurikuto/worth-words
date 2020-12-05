@@ -10,21 +10,22 @@
             <h1 th:text="#{title}">title</h1>
         </div>
         <div class="contents">
-            <form action="/home" id="form" method="post">
+            <form action="/words/register" id="form" method="post" th:object="${formModel}">
                 <div>
-                    <textarea name="words" rows="5" col="40" maxlength="300">器は仕えることによって美を増し、主は使うことによって愛を増すのである。</textarea>
+                    <p><label for="words">ことば</label></p>
+                    <textarea name="words" id="words" rows="5" col="40" maxlength="300" th:text="*{words}"></textarea>
                 </div>
                 <div>
                     <p><label for="source">出典</label></p>
-                    <input type="text" id="source" name="source" value="柳宗悦">
+                    <input type="text" id="source" name="source" th:value="*{source}">
                 </div>
                 <div>
-                    <p><label for="date">日付</label></p>
-                    <input type="text" id="date" name="date" value="2020/11/22">    
+                    <p><label for="wordsDate">ことば日付</label></p>
+                    <input type="text" id="wordsDate" name="wordsDate" th:value="*{wordsDate}">    
                 </div>
                 <div>
-                    <p><label for="contributor">投稿者</label></p>
-                    <input type="text" id="contributor" name="contributor" value="kurikuto">    
+                    <p><label for="openFlg">公開する</label></p>
+                    <input type="checkbox" id="openFlg" name="openFlg" th:field="*{openFlg}">    
                 </div>
             </form>
             <div>

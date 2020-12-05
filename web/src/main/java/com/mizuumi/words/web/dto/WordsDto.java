@@ -3,7 +3,7 @@ package com.mizuumi.words.web.dto;
 import lombok.Data;
 
 @Data
-public class Words {
+public class WordsDto {
     private int id;
     private String title;
     private String words;
@@ -11,5 +11,6 @@ public class Words {
     private int category;
     private String wordsDate;
     private String contributor;
+    private boolean openFlg;
 
 }

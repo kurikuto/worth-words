@@ -1,6 +1,6 @@
 package com.mizuumi.words.web;
 
-import com.mizuumi.words.web.dto.Words;
+import com.mizuumi.words.web.dto.WordsDto;
 import com.mizuumi.words.web.util.dateUtil;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class WordsListController {
     @GetMapping("/list")
     public ModelAndView get(ModelAndView mav) {
         // ことばリスト
-        List<Words> wordsList = new ArrayList<Words>();
+        List<WordsDto> wordsList = new ArrayList<WordsDto>();
         // 暫定
         this.setSampleList(wordsList);
 
@@ -34,7 +34,7 @@ public class WordsListController {
         ModelAndView mav) 
     {
         // ことばリスト
-        List<Words> wordsList = new ArrayList<Words>();
+        List<WordsDto> wordsList = new ArrayList<WordsDto>();
         // 暫定
         mav.addObject("category", "category: " + category);
         this.setSampleList(wordsList);
@@ -45,9 +45,9 @@ public class WordsListController {
     }
 
     // sample list
-    private List<Words> setSampleList(List<Words> wordsList) {
+    private List<WordsDto> setSampleList(List<WordsDto> wordsList) {
         for (int i = 1; i < 6; i++) {
-            Words words = new Words();
+            WordsDto words = new WordsDto();
             // Wordsクラス設定
             words.setId(i);
             words.setTitle("ことば" + i);

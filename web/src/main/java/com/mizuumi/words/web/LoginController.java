@@ -1,5 +1,9 @@
 package com.mizuumi.words.web;
 
+import com.mizuumi.words.web.repository.MemberRepository;
+import com.mizuumi.words.web.entity.MemberEntity;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
+
+    @Autowired
+    MemberRepository memberRepository;
     
     @GetMapping("/login")
     public String get() {
@@ -24,6 +31,8 @@ public class LoginController {
             return new ModelAndView("redirect:/home");
         }
         mav.addObject("msg", "パスワードが誤っています。");
+        Iterable<MemberEntity> memberList = memberRepository.findAll();
+        mav.addObject("memberList", memberList);
         mav.setViewName("login");
         return mav;
     }
