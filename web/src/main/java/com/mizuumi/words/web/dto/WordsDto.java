@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class WordsDto {
-    private int id;
+    private int wordsId;
     private String title;
     private String words;
     private String source;

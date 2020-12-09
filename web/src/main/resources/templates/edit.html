@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <header>
+        <title>edit</title>
+        <meta http-equiv="Content-Type" content="text:html; charset=utf-8" />
+    </header>
+    <style th:include="base::base_style"></style>
+    <body>
+        <div th:include="base::header_body">
+            <h1 th:text="#{title}">title</h1>
+        </div>
+        <div class="contents">
+            <form action="/words/register" id="form" method="post" th:object="${formModel}">
+                <input type="hidden" name="wordsId" th:value="*{wordsId}" />
+                <div>
+                    <p><label for="words">ことば</label></p>
+                    <textarea name="words" id="words" rows="5" col="40" maxlength="300" th:text="*{words}"></textarea>
+                </div>
+                <div>
+                    <p><label for="source">出典</label></p>
+                    <input type="text" id="source" name="source" th:value="*{source}">
+                </div>
+                <div>
+                    <p><label for="wordsDate">ことば日付</label></p>
+                    <input type="text" id="wordsDate" name="wordsDate" th:value="*{wordsDate}">    
+                </div>
+                <div>
+                    <p><label for="openFlg">公開する</label></p>
+                    <input type="checkbox" id="openFlg" name="openFlg" th:field="*{openFlg}">    
+                </div>
+            </form>
+            <div>
+                <a href="/home"><button name="home">戻る</button></a>
+                <button type="submit" form="form" name="register">登録</button>
+            </div>
+        </div>
+        <div th:include="base::footer_body">
+            <img src="" alt="footer image">
+        </div>
+    </body>
+</html>

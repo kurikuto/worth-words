@@ -27,7 +27,7 @@
             </div>
             <ul style="list-style:none">
                 <li th:each="words:${wordsList}">
-                    <a th:href="@{'/words/read/{id}'(id=${words.id})}">
+                    <a th:href="@{'/words/read/{id}'(id=${words.wordsId})}">
                         <p th:text="${words.title}">タイトル</p>
                         <p th:text="${words.wordsDate}">日付</p>
                     </a>
