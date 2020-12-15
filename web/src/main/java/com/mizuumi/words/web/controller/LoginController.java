@@ -1,4 +1,4 @@
-package com.mizuumi.words.web;
+package com.mizuumi.words.web.controller;
 
 import com.mizuumi.words.web.repository.MemberRepository;
 import com.mizuumi.words.web.entity.MemberEntity;

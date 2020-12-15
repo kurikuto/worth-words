@@ -10,8 +10,10 @@
             <h1 th:text="#{title}">title</h1>
         </div>
         <div class="contents">
-            <form action="/words/register" id="form" method="post" th:object="${formModel}">
+            <form action="/words/edit" id="form" method="post" th:object="${formModel}">
                 <input type="hidden" name="wordsId" th:value="*{wordsId}" />
+                <input type="hidden" name="memberId" th:value="*{memberId}" />
+                <input type="hidden" name="created" th:value="*{created}" />
                 <div>
                     <p><label for="words">ことば</label></p>
                     <textarea name="words" id="words" rows="5" col="40" maxlength="300" th:text="*{words}"></textarea>

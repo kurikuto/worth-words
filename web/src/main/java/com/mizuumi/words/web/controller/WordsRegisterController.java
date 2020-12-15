@@ -1,4 +1,4 @@
-package com.mizuumi.words.web;
+package com.mizuumi.words.web.controller;
 
 import javax.transaction.Transactional;
 import com.mizuumi.words.web.dto.WordsDto;
