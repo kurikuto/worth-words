@@ -3,7 +3,7 @@ package com.mizuumi.words.web.controller;
 import com.mizuumi.words.web.dto.WordsDto;
 import com.mizuumi.words.web.entity.WordsEntity;
 import com.mizuumi.words.web.repository.WordsRepository;
-import com.mizuumi.words.web.util.dateUtil;
+//import com.mizuumi.words.web.util.dateUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,8 @@ public class WordsListController {
         // ことばリスト
         List<WordsDto> wordsList = new ArrayList<WordsDto>();
         // 暫定
-        wordsList = this.setSampleList(wordsList);
+        //wordsList = this.setSampleList(wordsList);
+        wordsList = this.getWordsList(1001);
         // 暫定
         Long wordsId = 1L;
         WordsDto dto = new WordsDto();
@@ -67,7 +68,8 @@ public class WordsListController {
         List<WordsDto> wordsList = new ArrayList<WordsDto>();
         // 暫定
         mav.addObject("category", "category: " + category);
-        this.setSampleList(wordsList);
+        //this.setSampleList(wordsList);
+        wordsList = this.getWordsList(1001);
 
         mav.addObject("wordsList", wordsList);
         mav.setViewName("list");
@@ -75,17 +77,40 @@ public class WordsListController {
     }
 
     // sample list
-    private List<WordsDto> setSampleList(List<WordsDto> wordsList) {
-        for (int i = 1; i < 6; i++) {
-            WordsDto words = new WordsDto();
-            // Wordsクラス設定
-            words.setWordsId(i);
-            words.setTitle("ことば" + i);
-            words.setWordsDate(dateUtil.getNowDate());
-            wordsList.add(words);
-        }
+    // private List<WordsDto> setSampleList(List<WordsDto> wordsList) {
+    //     for (int i = 1; i < 6; i++) {
+    //         WordsDto words = new WordsDto();
+    //         // Wordsクラス設定
+    //         words.setWordsId(i);
+    //         words.setTitle("ことば" + i);
+    //         words.setWordsDate(dateUtil.getNowDate());
+    //         wordsList.add(words);
+    //     }
 
+    //     return wordsList;
+    // }
+
+    /**
+     * 該当ユーザのことば一覧を取得する
+     * 
+     * @param memberId
+     * @return
+     */
+    private List<WordsDto> getWordsList(int memberId) {
+        // ことばリスト
+        List<WordsDto> wordsList = new ArrayList<WordsDto>();
+
+        List<WordsEntity> data = wordsRepository.findByMemberIdOrderByWordsIdDesc(memberId);
+
+        int i = 1;
+        for (WordsEntity entity : data) {
+            WordsDto dto = new WordsDto();
+            BeanUtils.copyProperties(entity, dto);
+            dto.setTitle(memberId + "のことば" + i);
+            wordsList.add(dto);
+            i ++;
+        }
         return wordsList;
     }
-
+    
 }

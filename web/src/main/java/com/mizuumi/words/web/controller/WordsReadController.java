@@ -1,11 +1,15 @@
 package com.mizuumi.words.web.controller;
 
 import com.mizuumi.words.web.dto.WordsDto;
+import com.mizuumi.words.web.entity.WordsEntity;
 import com.mizuumi.words.web.repository.WordsRepository;
+
+import java.util.Optional;
 
 import com.mizuumi.words.web.util.dateUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,19 +32,21 @@ public class WordsReadController {
      * @return
      */
     @GetMapping("/words/read/{id}")
-    public ModelAndView read(@PathVariable int id, ModelAndView mav) {
-        int res = 1;
-        for (int i = 1; i < id; i++) {
-            res += 1;
-        }
-
+    public ModelAndView read(@PathVariable long id, ModelAndView mav) {
+        // int res = 1;
+        // for (int i = 1; i < id; i++) {
+        //     res += 1;
+        // }
         WordsDto words = new WordsDto();
-        // Wordsクラス設定
-        words.setWords("ことば" + res);
-        words.setSource("出典" + res);
-        words.setCategory(res);
-        words.setWordsDate(dateUtil.getNowDate());
-        words.setContributor("投稿者" + res);
+        Optional<WordsEntity> data = wordsRepository.findByWordsId(id);
+        BeanUtils.copyProperties(data.get(), words);
+
+        // // Wordsクラス設定
+        // words.setWords("ことば" + res);
+        // words.setSource("出典" + res);
+        // words.setCategory(res);
+        // words.setWordsDate(dateUtil.getNowDate());
+        words.setContributor("投稿者" + words.getMemberId());
         mav.addObject("words", words);
 
         mav.setViewName("read");
