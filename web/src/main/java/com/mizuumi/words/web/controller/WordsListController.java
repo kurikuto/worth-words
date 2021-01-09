@@ -7,7 +7,7 @@ import com.mizuumi.words.web.repository.WordsRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +39,13 @@ public class WordsListController {
         //wordsList = this.setSampleList(wordsList);
         wordsList = this.getWordsList(1001);
         // 暫定
-        Long wordsId = 1L;
-        WordsDto dto = new WordsDto();
+        // Long wordsId = 1L;
+        // WordsDto dto = new WordsDto();
 
-        Optional<WordsEntity> data = wordsRepository.findByWordsId(wordsId);
-        BeanUtils.copyProperties(data.get(), dto);
-        dto.setTitle("取得したことば");
-        wordsList.add(dto);
+        // Optional<WordsEntity> data = wordsRepository.findByWordsId(wordsId);
+        // BeanUtils.copyProperties(data.get(), dto);
+        // dto.setTitle("取得したことば");
+        // wordsList.add(dto);
 
         mav.addObject("wordsList", wordsList);
         mav.setViewName("list");

@@ -31,6 +31,12 @@
                         <p th:text="${words.title}">タイトル</p>
                         <p th:text="${words.wordsDate}">日付</p>
                     </a>
+                    <a th:href="@{'/words/edit/{id}'(id=${words.wordsId})}">
+                        <button name="edit" >編集</button>
+                    </a>
+                    <a th:href="@{'/words/delete/{id}'(id=${words.wordsId})}">
+                        <button name="delete" >削除</button>
+                    </a>
                 </li>
             </ul>
             <p><button type="submit" formaction="#" name="back">前へ</button></p>
