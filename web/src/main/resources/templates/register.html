@@ -10,6 +10,7 @@
             <h1 th:text="#{title}">title</h1>
         </div>
         <div class="contents">
+            <p th:if="${error}" th:text="未入力の項目があります。"></p>
             <form action="/words/register" id="form" method="post" th:object="${formModel}">
                 <div>
                     <p><label for="words">ことば</label></p>
