@@ -12,6 +12,11 @@
         <div class="contents">
             <div th:object="${words}">
                 <div>
+                    <p><label for="title">タイトル</label></p>
+                    <input type="text" id="title" th:value="*{title}" disabled>
+                </div>
+                <div>
+                    <p><label for="source">ことば</label></p>
                     <textarea name="words" rows="5" col="40" th:text="*{words}" disabled>器は仕えることによって美を増し、主は使うことによって愛を増すのである。</textarea>
                 </div>
                 <div>

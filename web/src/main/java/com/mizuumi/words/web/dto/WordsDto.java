@@ -2,6 +2,7 @@ package com.mizuumi.words.web.dto;
 
 import lombok.Data;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Data
 public class WordsDto {
@@ -10,6 +11,7 @@ public class WordsDto {
 
     private Integer memberId;
 
+    @Size(max = 20)
     private String title;
 
     @NotEmpty

@@ -2,7 +2,9 @@ package com.mizuumi.words.web.controller;
 
 import com.mizuumi.words.web.dto.WordsDto;
 import com.mizuumi.words.web.entity.WordsEntity;
+import com.mizuumi.words.web.entity.MemberEntity;
 import com.mizuumi.words.web.repository.WordsRepository;
+import com.mizuumi.words.web.repository.MemberRepository;
 
 import java.util.Optional;
 
@@ -24,6 +26,9 @@ public class WordsReadController {
     @Autowired
     WordsRepository wordsRepository;
 
+    @Autowired
+    MemberRepository memberRepository;
+
     /**
      * ことば画面
      * 
@@ -33,20 +38,15 @@ public class WordsReadController {
      */
     @GetMapping("/words/read/{id}")
     public ModelAndView read(@PathVariable long id, ModelAndView mav) {
-        // int res = 1;
-        // for (int i = 1; i < id; i++) {
-        //     res += 1;
-        // }
         WordsDto words = new WordsDto();
         Optional<WordsEntity> data = wordsRepository.findByWordsId(id);
         BeanUtils.copyProperties(data.get(), words);
 
-        // // Wordsクラス設定
-        // words.setWords("ことば" + res);
-        // words.setSource("出典" + res);
-        // words.setCategory(res);
-        // words.setWordsDate(dateUtil.getNowDate());
-        words.setContributor("投稿者" + words.getMemberId());
+        if (words.getTitle() == null) {
+            words.setTitle("no title");
+        }
+        Optional<MemberEntity> member = memberRepository.findByMemberId(data.get().getMemberId());
+        words.setContributor(member.get().getNickname());
         mav.addObject("words", words);
 
         mav.setViewName("read");
@@ -64,6 +64,7 @@ public class WordsReadController {
         // Wordsクラス設定
         words.setWords("今日のことば");
         words.setSource("今日の出典");
+        words.setTitle("no title");
         words.setCategory(1);
         words.setWordsDate(dateUtil.getNowDate());
         words.setContributor("今日の投稿者");

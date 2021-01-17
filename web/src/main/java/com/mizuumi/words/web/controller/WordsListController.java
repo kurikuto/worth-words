@@ -3,11 +3,9 @@ package com.mizuumi.words.web.controller;
 import com.mizuumi.words.web.dto.WordsDto;
 import com.mizuumi.words.web.entity.WordsEntity;
 import com.mizuumi.words.web.repository.WordsRepository;
-//import com.mizuumi.words.web.util.dateUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,17 +33,8 @@ public class WordsListController {
     public ModelAndView get(ModelAndView mav) {
         // ことばリスト
         List<WordsDto> wordsList = new ArrayList<WordsDto>();
-        // 暫定
-        //wordsList = this.setSampleList(wordsList);
+        // TODO: memberId
         wordsList = this.getWordsList(1001);
-        // 暫定
-        // Long wordsId = 1L;
-        // WordsDto dto = new WordsDto();
-
-        // Optional<WordsEntity> data = wordsRepository.findByWordsId(wordsId);
-        // BeanUtils.copyProperties(data.get(), dto);
-        // dto.setTitle("取得したことば");
-        // wordsList.add(dto);
 
         mav.addObject("wordsList", wordsList);
         mav.setViewName("list");
@@ -66,9 +55,9 @@ public class WordsListController {
     {
         // ことばリスト
         List<WordsDto> wordsList = new ArrayList<WordsDto>();
-        // 暫定
+        // TODO: カテゴリ対応
         mav.addObject("category", "category: " + category);
-        //this.setSampleList(wordsList);
+        // TODO: memberId
         wordsList = this.getWordsList(1001);
 
         mav.addObject("wordsList", wordsList);
@@ -86,7 +75,6 @@ public class WordsListController {
     //         words.setWordsDate(dateUtil.getNowDate());
     //         wordsList.add(words);
     //     }
-
     //     return wordsList;
     // }
 
@@ -102,13 +90,13 @@ public class WordsListController {
 
         List<WordsEntity> data = wordsRepository.findByMemberIdOrderByWordsIdDesc(memberId);
 
-        int i = 1;
         for (WordsEntity entity : data) {
             WordsDto dto = new WordsDto();
             BeanUtils.copyProperties(entity, dto);
-            dto.setTitle(memberId + "のことば" + i);
+            if (dto.getTitle() == null) {
+                dto.setTitle("no title");
+            }
             wordsList.add(dto);
-            i ++;
         }
         return wordsList;
     }

@@ -22,6 +22,9 @@ public class WordsEntity {
     @Column(name = "member_id", nullable = false)
     private Integer memberId;
 
+    @Column(name = "title", nullable = true)
+    private String title;
+
     @Column(name = "words", length = 300, nullable = false)
     private String words;
 

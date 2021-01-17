@@ -13,6 +13,9 @@
             <p th:if="${error}" th:text="未入力の項目があります。"></p>
             <form action="/words/register" id="form" method="post" th:object="${formModel}">
                 <div>
+                    <p><label for="title">タイトル</label></p>
+                    <input type="text" id="title" name="title" th:value="*{title}">                </div>
+                <div>
                     <p><label for="words">ことば</label></p>
                     <textarea name="words" id="words" rows="5" col="40" maxlength="300" th:text="*{words}"></textarea>
                 </div>
